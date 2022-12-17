@@ -2,14 +2,20 @@
 
 // DECLARATIVE
 pipeline {
-	//agent any
-	agent { docker { image 'node:13.8'}}
+	//agent { docker { image 'node:13.8'}}
+	agent any
+    environement { 
+		dockerHome = tool 'myDocker'
+		mavenHome = tool 'myMaven'
+		PATH = '$dockerHome/bin:$mavenHome/bin:$PATH'
+	} 
 	stages {
 		stage('Build') {
 			steps {
-				    // sh 'mvn --version'
-					sh 'node --version'
+				    sh 'mvn --version'
+					sh 'docker version'
                     echo "Build"
+					echo 'PATH - $PATH'
 			}
 		}
 		stage('Test') {
