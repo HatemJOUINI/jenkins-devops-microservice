@@ -26,12 +26,11 @@ pipeline {
 			echo 'Im awesome i run always'
 		}
 
-		Success {
+		success {
 			echo 'I run when u are successful'
 		}
-
 		
-		Failure {
+		failure {
 			echo 'I run when u fail'
 		}
 	}
